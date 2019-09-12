@@ -7,9 +7,9 @@ using System.Text;
 
 namespace MyBlog.DAL.Config
 {
-    public class PostConfiguration : IEntityTypeConfiguration<User>
+    public class PostConfiguration : IEntityTypeConfiguration<Post>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Post> builder)
         {
             builder.Property(x => x.Title)
                 .IsRequired()

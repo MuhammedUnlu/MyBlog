@@ -1,8 +1,5 @@
 ﻿using MyBlog.Common.Security;
 using Microsoft.EntityFrameworkCore;
-using MyBlog.DAL.Config;
-using MyBlog.Domain.Entities;
-using MyBlog.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;

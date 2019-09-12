@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyBlog.Domain.Entities
 {
-    public class User : BaseEntity
+    public class Post : BaseEntity
     {
         public int AuthorId { get; set; }
 
@@ -17,6 +17,6 @@ namespace MyBlog.Domain.Entities
 
 
         public User Author { get; set; }
-        public User Category { get; set; }
+        public Category Category { get; set; }
     }
 }

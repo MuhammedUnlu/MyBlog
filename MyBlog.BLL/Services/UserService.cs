@@ -6,6 +6,7 @@ using MyBlog.DAL.UntiOfWork;
 using MyBlog.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MyBlog.BLL.Services
@@ -31,6 +32,11 @@ namespace MyBlog.BLL.Services
         {
             var user = _userRepository.GetById(id);
             _userRepository.Delete(user);
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAll().OrderBy(x => x.UserName).ToList();
         }
 
         public User GetUserById(int id)
