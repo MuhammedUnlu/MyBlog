@@ -38,10 +38,15 @@ namespace MyBlog.UI
 
             });
 
-            services.AddDbContext<MyBlogContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MyBlogContext")));
+            services.AddDbContext<MyBlogContext>(
+                x => x
+                .UseLazyLoadingProxies()
+            .UseSqlServer(Configuration.GetConnectionString("MyBlogContext")));
 
             services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
             services.AddScoped<IUserServices, UserService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPostService, PostService>();
 
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -69,6 +74,7 @@ namespace MyBlog.UI
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

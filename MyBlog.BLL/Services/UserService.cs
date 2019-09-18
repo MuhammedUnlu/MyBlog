@@ -26,6 +26,7 @@ namespace MyBlog.BLL.Services
         {
             user.PasswordHash = HashHelper.HashPassword(password);
             _userRepository.Add(user);
+            _unitOfWork.SaveChanges();
         }
 
         public void DeleteUser(int id)
@@ -65,6 +66,11 @@ namespace MyBlog.BLL.Services
 
             _userRepository.Update(record);
             _unitOfWork.SaveChanges();
+        }
+
+        public bool UserExists(string username)
+        {
+            return _userRepository.GetAll().Any(x => x.UserName == username);
         }
 
         public bool VerifyPassword(User user, string password)

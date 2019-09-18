@@ -11,6 +11,8 @@ namespace MyBlog.DAL.Config
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasIndex(x => x.UserName).IsUnique();
+
             builder.Property(x => x.Email)
                 .IsRequired()
                 .HasMaxLength(256);
